@@ -117,5 +117,179 @@
     ],
     "createdBy": "u_demo",
     "createdAt": "2024-06-15T10:00:00.000Z"
+  },
+  {
+    "id": "r_mediterranean_quinoa_salad",
+    "title": "Mediterranean Quinoa Salad",
+    "description": "A fresh, protein-packed salad loaded with veggies, herbs, and feta.",
+    "imageUrl": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+    "cuisine": "Mediterranean",
+    "category": "Salad",
+    "difficulty": "Easy",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 4,
+    "ingredients": [
+      { "name": "Quinoa", "quantity": "1 cup" },
+      { "name": "Cucumber", "quantity": "1, diced" },
+      { "name": "Cherry tomatoes", "quantity": "1 cup, halved" },
+      { "name": "Kalamata olives", "quantity": "1/3 cup, sliced" },
+      { "name": "Red onion", "quantity": "1/4 cup, minced" },
+      { "name": "Feta cheese", "quantity": "1/2 cup, crumbled" },
+      { "name": "Olive oil & lemon juice", "quantity": "3 tbsp & 2 tbsp" },
+      { "name": "Fresh parsley", "quantity": "2 tbsp, chopped" }
+    ],
+    "steps": [
+      "Cook quinoa according to package instructions; fluff and cool.",
+      "Combine vegetables, olives, and feta in a large bowl.",
+      "Whisk olive oil, lemon juice, salt, and pepper for the dressing.",
+      "Toss quinoa with veggies and dressing, garnish with parsley."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-20T08:30:00.000Z"
+  },
+  {
+    "id": "r_beef_tacos",
+    "title": "Weeknight Beef Tacos",
+    "description": "Crispy tacos filled with seasoned beef, veggies, and tangy crema.",
+    "imageUrl": "https://images.unsplash.com/photo-1608039829574-0c18bfff3627?auto=format&fit=crop&w=1200&q=80",
+    "cuisine": "Mexican",
+    "category": "Dinner",
+    "difficulty": "Easy",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 4,
+    "ingredients": [
+      { "name": "Ground beef", "quantity": "500g" },
+      { "name": "Taco seasoning", "quantity": "2 tbsp" },
+      { "name": "Taco shells", "quantity": "8-10" },
+      { "name": "Shredded lettuce", "quantity": "1 cup" },
+      { "name": "Cheddar cheese", "quantity": "1 cup, shredded" },
+      { "name": "Tomato", "quantity": "1, diced" },
+      { "name": "Sour cream or crema", "quantity": "1/2 cup" }
+    ],
+    "steps": [
+      "Brown ground beef in a skillet and drain excess fat.",
+      "Stir in taco seasoning with 1/4 cup water; simmer 2-3 minutes.",
+      "Warm taco shells, then fill with beef, lettuce, tomato, and cheese.",
+      "Top with crema or sour cream and serve immediately."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-21T11:15:00.000Z"
+  },
+  {
+    "id": "r_veggie_stir_fry",
+    "title": "Ginger Veggie Stir-Fry",
+    "description": "Colorful vegetables tossed in a glossy ginger-garlic sauce.",
+    "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    "cuisine": "Asian",
+    "category": "Main Course",
+    "difficulty": "Medium",
+    "prepTime": 15,
+    "cookTime": 10,
+    "servings": 3,
+    "ingredients": [
+      { "name": "Broccoli florets", "quantity": "2 cups" },
+      { "name": "Bell peppers", "quantity": "2, sliced" },
+      { "name": "Snow peas", "quantity": "1 cup" },
+      { "name": "Carrots", "quantity": "1 cup, sliced" },
+      { "name": "Garlic & ginger", "quantity": "2 cloves & 1 tbsp" },
+      { "name": "Soy sauce", "quantity": "3 tbsp" },
+      { "name": "Sesame oil", "quantity": "1 tbsp" },
+      { "name": "Cornstarch slurry", "quantity": "1 tsp cornstarch + 2 tsp water" }
+    ],
+    "steps": [
+      "Heat wok with sesame oil; sauté garlic and ginger until fragrant.",
+      "Add vegetables and stir-fry over high heat for 4-5 minutes.",
+      "Pour in soy sauce and cornstarch slurry; toss until glossy.",
+      "Serve hot over steamed rice or noodles."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-22T09:45:00.000Z"
+  },
+  {
+    "id": "r_lemon_garlic_salmon",
+    "title": "Lemon Garlic Salmon",
+    "description": "Oven-baked salmon fillets with bright lemon and herbs.",
+    "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sat=-50",
+    "cuisine": "American",
+    "category": "Dinner",
+    "difficulty": "Easy",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 2,
+    "ingredients": [
+      { "name": "Salmon fillets", "quantity": "2" },
+      { "name": "Lemon", "quantity": "1, sliced" },
+      { "name": "Garlic cloves", "quantity": "3, minced" },
+      { "name": "Butter", "quantity": "2 tbsp, melted" },
+      { "name": "Fresh dill", "quantity": "1 tbsp, chopped" },
+      { "name": "Salt & pepper", "quantity": "to taste" }
+    ],
+    "steps": [
+      "Preheat oven to 400°F (200°C).",
+      "Place salmon on parchment-lined tray and drizzle with butter.",
+      "Top with garlic, lemon slices, dill, salt, and pepper.",
+      "Bake 12-15 minutes until salmon flakes easily."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-23T07:10:00.000Z"
+  },
+  {
+    "id": "r_chocolate_mousse",
+    "title": "Silky Chocolate Mousse",
+    "description": "A decadent yet light dessert with whipped cream and dark chocolate.",
+    "imageUrl": "https://images.unsplash.com/photo-1505253216365-41b53f6980c4?auto=format&fit=crop&w=1200&q=80",
+    "cuisine": "French",
+    "category": "Dessert",
+    "difficulty": "Medium",
+    "prepTime": 20,
+    "cookTime": 0,
+    "servings": 4,
+    "ingredients": [
+      { "name": "Dark chocolate", "quantity": "200g" },
+      { "name": "Heavy cream", "quantity": "1 1/4 cups" },
+      { "name": "Egg whites", "quantity": "2" },
+      { "name": "Sugar", "quantity": "2 tbsp" },
+      { "name": "Vanilla extract", "quantity": "1 tsp" }
+    ],
+    "steps": [
+      "Melt chocolate over a double boiler and cool slightly.",
+      "Whip cream to soft peaks; in another bowl whip egg whites with sugar.",
+      "Fold chocolate into whipped cream, then gently fold in egg whites and vanilla.",
+      "Chill for at least 1 hour before serving."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-23T14:00:00.000Z"
+  },
+  {
+    "id": "r_buddha_bowl",
+    "title": "Roasted Veggie Buddha Bowl",
+    "description": "Hearty grains, roasted veggies, and creamy tahini dressing.",
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
+    "cuisine": "Fusion",
+    "category": "Lunch",
+    "difficulty": "Easy",
+    "prepTime": 15,
+    "cookTime": 25,
+    "servings": 2,
+    "ingredients": [
+      { "name": "Cooked brown rice or quinoa", "quantity": "2 cups" },
+      { "name": "Sweet potato", "quantity": "1, cubed" },
+      { "name": "Chickpeas", "quantity": "1 cup, drained" },
+      { "name": "Kale", "quantity": "2 cups, chopped" },
+      { "name": "Avocado", "quantity": "1, sliced" },
+      { "name": "Tahini", "quantity": "2 tbsp" },
+      { "name": "Lemon juice", "quantity": "1 tbsp" },
+      { "name": "Maple syrup", "quantity": "1 tsp" }
+    ],
+    "steps": [
+      "Roast sweet potato and chickpeas at 425°F (220°C) for 20 minutes.",
+      "Massage kale with a pinch of salt until tender.",
+      "Whisk tahini, lemon juice, maple syrup, and water for dressing.",
+      "Assemble bowls with grains, veggies, avocado, and drizzle dressing."
+    ],
+    "createdBy": "u_demo",
+    "createdAt": "2024-06-24T09:05:00.000Z"
   }
 ]

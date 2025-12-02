@@ -4,89 +4,85 @@ import RecipeGrid from '../components/recipes/RecipeGrid'
 import { useRecipes } from '../context/RecipesContext'
 
 function ArcCarousel(){
-  const images = useMemo(() => [
-    { src: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd', alt: 'Salad' },
-    { src: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543', alt: 'Burger' },
-    { src: 'https://images.unsplash.com/photo-1485921325833-c519f76c4927', alt: 'Pasta' },
-    { src: 'https://images.unsplash.com/photo-1481931098730-318b6f776db0', alt: 'Dessert' },
-    { src: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061', alt: 'Salmon' },
+  const slides = useMemo(() => [
+    {
+      src: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd',
+      alt: 'Vibrant salad bowl',
+      label: 'Fresh & Colorful',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543',
+      alt: 'Gourmet burger',
+      label: 'Comfort Classics',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1485921325833-c519f76c4927',
+      alt: 'Pasta plate',
+      label: 'Pasta Night',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1481931098730-318b6f776db0',
+      alt: 'Dessert plate',
+      label: 'Sweet Treats',
+    },
   ], [])
-  const [offset, setOffset] = useState(0)
-  const [current] = useState(2)
-  const containerRef = useRef(null)
+
+  const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
 
   useEffect(() => {
-    let raf, last = performance.now()
-    const loop = (t) => {
-      const dt = t - last; last = t
-      if (!paused) setOffset(o => (o + dt * 0.00022) % 1)
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(raf)
-  }, [paused])
+    if (paused) return
+    const id = setInterval(() => {
+      setIndex(i => (i + 1) % slides.length)
+    }, 3200)
+    return () => clearInterval(id)
+  }, [slides.length, paused])
 
-  const w = 560
-  const h = 360
-  const r = 220
-  const cx = w/2
-  const cy = h/2 + 40
-  const arcPath = `M ${cx-r} ${cy} A ${r} ${r} 0 0 0 ${cx+r} ${cy}`
-
-  const thumbPositions = images.map((img, i) => {
-    const t = ((i / images.length) + offset) % 1
-    const ang = Math.PI + (0 - Math.PI) * t
-    const x = cx + Math.cos(ang) * r
-    const y = cy - Math.sin(ang) * r
-    return { img, x, y }
-  })
-
-  function nudge(delta){
-    setOffset(o => (o + delta + 1) % 1)
-  }
+  const active = slides[index]
 
   return (
     <div
-      ref={containerRef}
-      className="relative w-full max-w-[620px] sm:mt-2 md:mt-0"
-      style={{ height: `${h}px` }}
+      className="relative w-full max-w-[520px] sm:mt-2 md:mt-0"
       onMouseEnter={()=>setPaused(true)}
       onMouseLeave={()=>setPaused(false)}
     >
-      <svg className="w-full" viewBox={`0 0 ${w} ${h}`}> 
-        <path d={arcPath} className="stroke-yellow-400/80 [stroke-dasharray:10_12] stroke-[4] fill-none" />
-      </svg>
-      {thumbPositions.map(({ img, x, y }, idx) => (
-        <div
-          key={idx}
-          className="absolute z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full ring-4 ring-white shadow-lg"
-          style={{ left: x, top: y, width: 60, height: 60 }}
-        >
-          <img src={img.src} alt={img.alt} className="h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-10 rounded-[40%] bg-gradient-to-br from-yellow-400/40 via-amber-300/20 to-transparent blur-3xl" />
+
+      <div className="relative overflow-hidden rounded-[2.25rem] border border-white/15 bg-black/40 p-3 shadow-2xl shadow-black/70 backdrop-blur-xl">
+        <div className="relative h-64 w-full overflow-hidden rounded-3xl sm:h-72">
+          <img
+            key={active.src}
+            src={active.src}
+            alt={active.alt}
+            className="h-full w-full origin-center scale-105 object-cover transition duration-700 ease-out hover:scale-110"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         </div>
-      ))}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-6">
-        <div className="h-44 w-44 overflow-hidden rounded-full bg-white shadow-2xl ring-4 ring-white sm:h-56 sm:w-56 md:h-64 md:w-64">
-          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Hero" className="h-full w-full object-cover" />
+
+        <div className="mt-4 flex items-center justify-between gap-3 px-2 pb-1">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/80">
+              Today&apos;s inspiration
+            </p>
+            <p className="mt-1 text-sm font-medium text-white">{active.label}</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={s.src}
+                onClick={()=>setIndex(i)}
+                className={`h-2.5 w-2.5 rounded-full transition ${
+                  i === index
+                    ? 'bg-gradient-to-r from-primary-500 via-amber-400 to-rose-400 shadow-[0_0_0_4px_rgba(250,204,21,0.25)]'
+                    : 'bg-white/15 hover:bg-white/30'
+                }`}
+                aria-label={`Go to slide ${i+1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Arrow controls */}
-      <button
-        aria-label="Previous"
-        onClick={()=>nudge(-0.06)}
-        className="absolute -bottom-4 left-8 grid h-10 w-10 place-items-center rounded-full bg-yellow-400 text-white shadow hover:bg-yellow-500"
-      >
-        <span className="-rotate-180 text-xl">➜</span>
-      </button>
-      <button
-        aria-label="Next"
-        onClick={()=>nudge(0.06)}
-        className="absolute -bottom-4 right-8 grid h-10 w-10 place-items-center rounded-full bg-yellow-400 text-white shadow hover:bg-yellow-500"
-      >
-        <span className="text-xl">➜</span>
-      </button>
     </div>
   )
 }
@@ -101,9 +97,13 @@ export default function Home(){
 
       <main className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-4 pb-20 pt-16 md:grid-cols-2 md:pb-28 md:pt-24">
         <section className="order-2 md:order-1">
-          <h1 className="text-5xl font-extrabold leading-tight text-yellow-500 md:text-6xl">Delicious</h1>
-          <h2 className="mt-2 text-3xl font-semibold text-gray-800 md:text-4xl">Quench the Hunger</h2>
-          <p className="mt-5 max-w-md text-sm leading-7 text-gray-600 md:text-base">Discover amazing recipes from around the world. Our virtual assistant helps you
+          <h1 className="text-5xl font-extrabold leading-tight text-white drop-shadow-sm md:text-6xl">
+            Delicious
+          </h1>
+          <h2 className="mt-2 text-3xl font-semibold text-slate-100 md:text-4xl">
+            Quench the Hunger
+          </h2>
+          <p className="mt-5 max-w-md text-sm leading-7 text-white md:text-base">Discover amazing recipes from around the world. Our virtual assistant helps you
               find the perfect dish for any occasion.</p>
           <button
             onClick={() => document.getElementById('recipes')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}

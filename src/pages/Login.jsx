@@ -30,12 +30,12 @@ export default function Login(){
           <p className="mt-1 text-sm text-gray-600">Use the demo credentials or your account to sign in.</p>
           <form onSubmit={submit} className="mt-6 space-y-4">
             <div>
-              <label className="mb-1 block text-sm">Email</label>
-              <Input type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+              <label className="mb-1 block text-sm text-gray-700">Email</label>
+              <Input variant="light" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
             </div>
             <div>
-              <label className="mb-1 block text-sm">Password</label>
-              <Input type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+              <label className="mb-1 block text-sm text-gray-700">Password</label>
+              <Input variant="light" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
             </div>
             <Button disabled={loading} type="submit" className="w-full">Sign in</Button>
           </form>

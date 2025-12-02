@@ -2,22 +2,35 @@ import sample from '../data/sampleRecipes.json'
 import { KEYS, storage } from './localStorage'
 
 const delay = (ms = 300) => new Promise(r => setTimeout(r, ms))
+const SAMPLE_VERSION = '2024-12-01'
 
 function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36)
 }
 
 function ensureSeed() {
-  const seeded = storage.get(KEYS.seed, false)
-  if (!seeded) {
-    const existing = storage.get(KEYS.recipes, [])
-    if (!existing?.length) storage.set(KEYS.recipes, sample)
-    const users = storage.get(KEYS.users, [])
-    if (!users?.length) storage.set(KEYS.users, [
+  const currentVersion = storage.get(KEYS.seed, '')
+  let recipes = storage.get(KEYS.recipes, [])
+  const needsInitialSeed = !recipes?.length
+  const needsUpgrade = currentVersion !== SAMPLE_VERSION
+
+  if (needsInitialSeed) {
+    storage.set(KEYS.recipes, sample)
+    recipes = sample
+  } else if (needsUpgrade) {
+    const existingIds = new Set(recipes.map(r => r.id))
+    const additions = sample.filter(r => !existingIds.has(r.id))
+    if (additions.length) storage.set(KEYS.recipes, [...recipes, ...additions])
+  }
+
+  const users = storage.get(KEYS.users, [])
+  if (!users?.length) {
+    storage.set(KEYS.users, [
       { id: 'u_demo', name: 'Demo User', email: 'demo@cookbook.app', password: 'demo123' },
     ])
-    storage.set(KEYS.seed, true)
   }
+
+  if (needsInitialSeed || needsUpgrade) storage.set(KEYS.seed, SAMPLE_VERSION)
 }
 
 export const api = {

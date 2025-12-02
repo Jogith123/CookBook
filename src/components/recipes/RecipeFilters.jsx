@@ -7,7 +7,7 @@ const difficulties = ['Easy','Medium','Hard']
 
 export default function RecipeFilters({ q, setQ, filters, setFilters, onApply }){
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 rounded-2xl bg-white/5 p-4 shadow-inner shadow-black/40 ring-1 ring-white/10 backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
       <Input placeholder="Search recipes..." value={q} onChange={e=>setQ(e.target.value)} />
       <Select value={filters.cuisine} onChange={e=>setFilters(v=>({...v, cuisine: e.target.value}))}>
         <option value="">All Cuisines</option>
@@ -21,7 +21,12 @@ export default function RecipeFilters({ q, setQ, filters, setFilters, onApply })
         <option value="">Any Difficulty</option>
         {difficulties.map(c => <option key={c} value={c}>{c}</option>)}
       </Select>
-      <button onClick={onApply} className="rounded-md bg-gray-100 px-3 py-2 text-sm hover:bg-gray-200 sm:col-span-2 lg:col-span-4">Apply Filters</button>
+      <button
+        onClick={onApply}
+        className="mt-1 rounded-full bg-gradient-to-r from-primary-500 via-amber-400 to-rose-400 px-4 py-2 text-sm font-medium text-slate-950 shadow hover:from-primary-400 hover:via-amber-300 hover:to-rose-300 sm:col-span-2 lg:col-span-4"
+      >
+        Apply Filters
+      </button>
     </div>
   )
 }

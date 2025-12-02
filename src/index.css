@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
+}
+
+body {
+  @apply bg-gradient-to-br from-[#050816] via-[#090b1f] to-[#050816] text-slate-50 antialiased;
 }
