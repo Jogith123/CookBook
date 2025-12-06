@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { api } from '../utils/fakeApi'
 import { useAuth } from '../context/AuthContext'
 import { useRecipes } from '../context/RecipesContext'
 import Button from '../components/ui/Button'
+import { fetchRecipeById } from '../api/recipesApi'
 
 export default function RecipeDetails(){
   const { id } = useParams()
@@ -12,7 +12,20 @@ export default function RecipeDetails(){
   const { favorite, remove } = useRecipes()
   const [r, setR] = useState(null)
   const [loading, setLoading] = useState(true)
-  useEffect(() => { api.getRecipe(id).then(x => { setR(x); setLoading(false) }) }, [id])
+  useEffect(() => {
+    async function loadRecipe() {
+      try {
+        const recipe = await fetchRecipeById(id)
+        setR(recipe)
+      } catch (err) {
+        console.error('Failed to load recipe', err)
+        setR(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadRecipe()
+  }, [id])
   if (loading) return <div className="py-12 text-center text-sm text-slate-300">Loading...</div>
   if (!r) return <div className="py-12 text-center text-sm text-slate-300">Not found.</div>
   return (
@@ -61,8 +74,8 @@ export default function RecipeDetails(){
               </div>
             </div>
             <div className="mt-4 flex flex-wrap gap-2 md:mt-6">
-              <Button onClick={()=>favorite(r.id)}>Save to Cookbook</Button>
-              {user && user.id === r.createdBy && (
+              <Button onClick={()=>favorite?.(r.id)} disabled={!favorite}>Save to Cookbook</Button>
+              {user && user.id === r.createdBy && remove && (
                 <>
                   <Button variant="secondary" onClick={()=>navigate(`/edit/${r.id}`)}>Edit</Button>
                   <Button variant="danger" onClick={async()=>{ await remove(r.id); navigate('/recipes') }}>Delete</Button>

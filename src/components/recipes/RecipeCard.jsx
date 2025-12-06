@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { useRecipes } from '../../context/RecipesContext'
 
 export default function RecipeCard({ recipe }){
-  const { favorite } = useRecipes()
+  const ctx = useRecipes() || {}
+  const { favorite } = ctx
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl shadow-black/40 backdrop-blur">
       <img src={recipe.imageUrl} alt={recipe.title} className="h-40 w-full object-cover" />
@@ -16,7 +17,13 @@ export default function RecipeCard({ recipe }){
         </div>
         <div className="flex items-center gap-2 pt-2">
           <Link to={`/recipes/${recipe.id}`} className="text-sm font-medium text-amber-300 hover:text-amber-200">View</Link>
-          <Button variant="secondary" onClick={()=>favorite(recipe.id)}>Save</Button>
+          <Button
+            variant="secondary"
+            onClick={()=>favorite && favorite(recipe.id)}
+            disabled={!favorite}
+          >
+            Save
+          </Button>
         </div>
       </div>
     </div>
