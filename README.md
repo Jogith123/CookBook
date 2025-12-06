@@ -6,19 +6,14 @@ It simulates a real full‑stack app using **LocalStorage** and a custom **Fake 
 
 ---
 
-## Live Demo
 
-Live Demo: **CookBook**  
-(Add your deployed URL here, e.g. Netlify / Vercel.)
 
 ### Video Walkthrough & Code Explanation
 
 Watch the full project explanation + live demo here:  
-[CookBook – Demo / Code Walkthrough](https://drive.google.com/drive/folders/1aIhFvDnZR6YQasQe10rKeJ2YsGojeyyn?usp=drive_link
+[CookBook – Demo / Code Walkthrough](https://drive.google.com/drive/folders/1fPBFbhkIW9c6hRKR1kaYTmXR7O69DLEX?usp=drive_link
   )  
-_(Replace `#` with your actual video link.)_
 
----
 
 ## Demo Login (Instant Access)
 
